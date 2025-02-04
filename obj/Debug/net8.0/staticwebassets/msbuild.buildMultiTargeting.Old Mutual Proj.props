@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Old Mutual Proj.props" />
+</Project>

@@ -1,0 +1,6 @@
+@Old_Mutual_Proj_HostAddress = http://localhost:5295
+
+GET {{Old_Mutual_Proj_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
