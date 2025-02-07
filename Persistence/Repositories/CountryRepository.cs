@@ -8,12 +8,12 @@ public class CountryRepository : ICountryRepository
 
     public CountryRepository(HttpClient httpClient)
     {
-        _httpClient = httpClient;
+        this._httpClient = httpClient;
     }
 
     public async Task<IEnumerable<Country>> GetAllCountriesAsync()
     {
-        var response = await _httpClient.GetStringAsync($"{CountryBaseUrl}/all");
+        var response = await this._httpClient.GetStringAsync($"{CountryBaseUrl}/all");
         var countries = JsonSerializer.Deserialize<IEnumerable<Country>>(response) ?? [];
         return countries;
     }
@@ -22,7 +22,7 @@ public class CountryRepository : ICountryRepository
     {
         try
         {
-            var response = await _httpClient.GetStringAsync($"{CountryBaseUrl}/name/{name}");
+            var response = await this._httpClient.GetStringAsync($"{CountryBaseUrl}/name/{name}");
             var countries = JsonSerializer.Deserialize<List<CountryDetails>>(response);
             return countries?.Count > 0 ? countries[0] : null;
         }

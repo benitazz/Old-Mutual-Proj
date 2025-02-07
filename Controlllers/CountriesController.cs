@@ -10,8 +10,8 @@ public class CountriesController : ControllerBase
 
     public CountriesController(ICountryService countryService, IMapper mapper)
     {
-        _countryService = countryService;
-        _mapper = mapper;
+        this._countryService = countryService;
+        this._mapper = mapper;
     }
 
     [HttpGet]
@@ -19,7 +19,7 @@ public class CountriesController : ControllerBase
     {
         try
         {
-            var countries = await _countryService.GetAllCountriesAsync();
+            var countries = await this._countryService.GetAllCountriesAsync();
 
             var countryDtos = this._mapper.Map<List<CountryDto>>(countries);
 
@@ -36,7 +36,7 @@ public class CountriesController : ControllerBase
     {
         try
         {
-            var countryDetail = await _countryService.GetCountryDetailsAsync(name);
+            var countryDetail = await this._countryService.GetCountryDetailsAsync(name);
             if (countryDetail == null)
                 return NotFound();
 
